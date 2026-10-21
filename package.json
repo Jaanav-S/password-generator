@@ -1,0 +1,11 @@
+{
+  "name": "passgen",
+  "version": "0.1.0",
+  "description": "Generate strong passwords and passphrases",
+  "main": "passgen.js",
+  "bin": { "passgen": "cli.js" },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
