@@ -77,3 +77,12 @@ function passwordEntropy(options = {}) {
 function passphraseEntropy(options = {}) {
   return entropyBits(WORDS.length, options.words ?? 4);
 }
+
+module.exports = {
+  SETS,
+  WORDS,
+  generatePassword,
+  generatePassphrase,
+  passwordEntropy,
+  passphraseEntropy,
+};
