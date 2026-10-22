@@ -39,3 +39,18 @@ function buildPool(options) {
   }
   return sets;
 }
+
+function generatePassword(options = {}) {
+  const length = options.length ?? 16;
+  const sets = buildPool(options);
+  if (length < sets.length) {
+    throw new Error(`length must be at least ${sets.length}`);
+  }
+  const pool = sets.join('');
+  // One guaranteed character per set, the rest from the full pool.
+  const chars = sets.map(pick);
+  while (chars.length < length) {
+    chars.push(pick(pool));
+  }
+  return shuffle(chars).join('');
+}
