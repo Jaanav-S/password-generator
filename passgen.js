@@ -54,3 +54,13 @@ function generatePassword(options = {}) {
   }
   return shuffle(chars).join('');
 }
+
+function generatePassphrase(options = {}) {
+  const count = options.words ?? 4;
+  const separator = options.separator ?? '-';
+  const words = Array.from({ length: count }, () => pick(WORDS));
+  if (options.capitalize) {
+    return words.map((w) => w[0].toUpperCase() + w.slice(1)).join(separator);
+  }
+  return words.join(separator);
+}
