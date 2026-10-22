@@ -68,3 +68,8 @@ function generatePassphrase(options = {}) {
 function entropyBits(poolSize, length) {
   return Math.round(length * Math.log2(poolSize) * 10) / 10;
 }
+
+function passwordEntropy(options = {}) {
+  const pool = buildPool(options).join('');
+  return entropyBits(pool.length, options.length ?? 16);
+}
