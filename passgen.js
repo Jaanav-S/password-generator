@@ -64,3 +64,7 @@ function generatePassphrase(options = {}) {
   }
   return words.join(separator);
 }
+
+function entropyBits(poolSize, length) {
+  return Math.round(length * Math.log2(poolSize) * 10) / 10;
+}
