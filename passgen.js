@@ -17,3 +17,7 @@ const WORDS = [
   'falcon', 'meadow', 'copper', 'lantern', 'summit', 'thunder', 'velvet', 'orbit',
   'pepper', 'glacier', 'canyon', 'marble', 'saddle', 'willow', 'ember', 'quartz',
 ];
+
+function pick(chars) {
+  return chars[randomInt(chars.length)];
+}
