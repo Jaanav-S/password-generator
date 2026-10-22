@@ -73,3 +73,7 @@ function passwordEntropy(options = {}) {
   const pool = buildPool(options).join('');
   return entropyBits(pool.length, options.length ?? 16);
 }
+
+function passphraseEntropy(options = {}) {
+  return entropyBits(WORDS.length, options.words ?? 4);
+}
