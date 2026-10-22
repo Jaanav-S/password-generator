@@ -29,3 +29,13 @@ function shuffle(items) {
   }
   return items;
 }
+
+function buildPool(options) {
+  const sets = Object.keys(SETS)
+    .filter((name) => options[name] !== false)
+    .map((name) => (options.avoidSimilar ? SETS[name].replace(SIMILAR, '') : SETS[name]));
+  if (sets.length === 0) {
+    throw new Error('at least one character set must be enabled');
+  }
+  return sets;
+}
