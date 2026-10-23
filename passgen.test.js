@@ -26,3 +26,8 @@ test('avoidSimilar removes look-alike characters', () => {
   const pw = generatePassword({ length: 200, avoidSimilar: true });
   assert.doesNotMatch(pw, /[Il1O0o]/);
 });
+
+test('rejects impossible options', () => {
+  assert.throws(() => generatePassword({ length: 2 }));
+  assert.throws(() => generatePassword({ lower: false, upper: false, digits: false, symbols: false }));
+});
