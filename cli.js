@@ -20,3 +20,30 @@ function parseArgs(argv) {
   }
   return opts;
 }
+
+const HELP = `usage: passgen [-l N] [-n N] [--no-symbols] [--no-digits] [--no-upper]
+               [--avoid-similar] [--phrase [-w N]]`;
+
+function main() {
+  let opts;
+  try {
+    opts = parseArgs(process.argv.slice(2));
+  } catch (err) {
+    console.error(err.message);
+    console.error(HELP);
+    process.exit(2);
+  }
+  if (opts.help) {
+    console.log(HELP);
+    return;
+  }
+  for (let i = 0; i < opts.count; i++) {
+    const value = opts.phrase
+      ? passgen.generatePassphrase({ ...opts, capitalize: true })
+      : passgen.generatePassword(opts);
+    const bits = opts.phrase ? passgen.passphraseEntropy(opts) : passgen.passwordEntropy(opts);
+    console.log(`${value}   (${bits} bits)`);
+  }
+}
+
+main();
