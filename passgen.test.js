@@ -21,3 +21,8 @@ test('respects disabled sets', () => {
   const pw = generatePassword({ length: 64, symbols: false, digits: false });
   assert.match(pw, /^[a-zA-Z]+$/);
 });
+
+test('avoidSimilar removes look-alike characters', () => {
+  const pw = generatePassword({ length: 200, avoidSimilar: true });
+  assert.doesNotMatch(pw, /[Il1O0o]/);
+});
