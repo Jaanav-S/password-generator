@@ -31,3 +31,9 @@ test('rejects impossible options', () => {
   assert.throws(() => generatePassword({ length: 2 }));
   assert.throws(() => generatePassword({ lower: false, upper: false, digits: false, symbols: false }));
 });
+
+test('passphrase uses words from the list', () => {
+  const words = generatePassphrase({ words: 5 }).split('-');
+  assert.strictEqual(words.length, 5);
+  assert.ok(words.every((w) => WORDS.includes(w)));
+});
