@@ -16,3 +16,8 @@ test('includes every enabled character set', () => {
     }
   }
 });
+
+test('respects disabled sets', () => {
+  const pw = generatePassword({ length: 64, symbols: false, digits: false });
+  assert.match(pw, /^[a-zA-Z]+$/);
+});
