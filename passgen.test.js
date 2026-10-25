@@ -37,3 +37,7 @@ test('passphrase uses words from the list', () => {
   assert.strictEqual(words.length, 5);
   assert.ok(words.every((w) => WORDS.includes(w)));
 });
+
+test('entropy grows with length', () => {
+  assert.ok(passwordEntropy({ length: 20 }) > passwordEntropy({ length: 10 }));
+});
