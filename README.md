@@ -13,3 +13,8 @@ node cli.js -n 3                # three passwords
 ```
 
 Every password includes at least one character from each enabled set.
+
+## Strength
+
+Each result is printed with its entropy in bits. As a rule of thumb, aim
+for 70+ bits for anything important.
